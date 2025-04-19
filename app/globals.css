@@ -6,8 +6,131 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* font family */
+  --font-vazir: var(--font-vazir);
+  /* font size */
+  /* heading */
+  --text-h1: 2rem;
+  --text-h2: 1.75rem;
+  --text-h3: 1.5rem;
+  /* display */
+  --text-D1: 3.5rem;
+  --text-D2: 2.8rem;
+  --text-D3: 2.25rem;
+  /* title */
+  --text-T1: 1.3rem;
+  --text-T2: 1rem;
+  --text-T3: 0.87rem;
+  /* label */
+  --text-L1: 0.87rem;
+  --text-L2: 0.75rem;
+  --text-L3: 0.68rem;
+  /* body */
+  --text-B1: 1.25rem;
+  --text-B2: 1rem;
+  --text-B3: 0.87rem;
+  --text-B4: 0.75rem;
+  --text-B5: 0.62rem;
+  /* colors */ /* primary */
+  --primary-50: rgb(233, 241, 240);
+  --primery-100: rgb(186, 211, 208);
+  --primary-200: rgb(152, 190, 186);
+  --primary-300: rgb(105, 160, 154);
+  --primary-400: rgb(76, 141, 134);
+  --primary-500: rgb(31, 113, 104);
+  --primary-600: rgb(28, 103, 95);
+  --primary-700: rgb(22, 80, 74);
+  --primary-800: rgb(17, 62, 57);
+  --primary-900: rgb(13, 47, 44);
+  /* secondary */
+  --secondary-50: rgb(255, 247, 236);
+  --secondary-100: rgb(255, 231, 196);
+  --secondary-200: rgb(255, 220, 168);
+  --secondary-300: rgb(255, 204, 128);
+  --secondary-400: rgb(255, 194, 104);
+  --secondary-500: rgb(255, 179, 66);
+  --secondary-600: rgb(232, 163, 60);
+  --secondary-700: rgb(181, 127, 47);
+  --secondary-800: rgb(140, 98, 36);
+  --secondary-900: rgb(107, 75, 28);
+  /* Accent */
+  --Accent-50: rgb(255, 252, 248);
+  --Accent-100: rgb(255, 247, 234);
+  --Accent-200: rgb(255, 243, 224);
+  --Accent-300: rgb(255, 237, 210);
+  --Accent-400: rgb(255, 233, 201);
+  --Accent-500: rgb(255, 228, 188);
+  --Accent-600: rgb(232, 207, 171);
+  --Accent-700: rgb(181, 162, 133);
+  --Accent-800: rgb(140, 125, 103);
+  --Accent-900: rgb(107, 96, 79);
+  /* White */
+  --White-50: rgb(254, 254, 254);
+  --White-100: rgb(253, 253, 253);
+  --White-200: rgb(252, 252, 252);
+  --White-300: rgb(251, 251, 251);
+  --White-400: rgb(250, 250, 250);
+  --White-500: rgb(249, 249, 249);
+  --White-600: rgb(227, 227, 227);
+  --White-700: rgb(177, 177, 177);
+  --White-800: rgb(137, 137, 137);
+  --White-900: rgb(105, 105, 105);
+  /* Black */
+  --Black-50: rgb(231, 231, 231);
+  --Black-100: rgb(182, 182, 182);
+  --Black-200: rgb(146, 146, 146);
+  --Black-300: rgb(96, 96, 96);
+  --Black-400: rgb(65, 65, 65);
+  --Black-500: rgb(18, 18, 18);
+  --Black-600: rgb(16, 16, 16);
+  --Black-700: rgb(13, 13, 13);
+  --Black-800: rgb(10, 10, 10);
+  --Black-900: rgb(8, 8, 8);
+  /* Gray */
+  --Gray-50: rgb(241, 241, 241);
+  --Gray-100: rgb(212, 212, 212);
+  --Gray-200: rgb(192, 192, 192);
+  --Gray-300: rgb(163, 163, 163);
+  --Gray-400: rgb(145, 145, 145);
+  --Gray-500: rgb(117, 117, 117);
+  --Gray-600: rgb(106, 106, 106);
+  --Gray-700: rgb(83, 83, 83);
+  --Gray-800: rgb(64, 64, 64);
+  --Gray-900: rgb(49, 49, 49);
+  /* Warning */
+  --Warning-50: rgb(254, 249, 230);
+  --Warning-100: rgb(252, 235, 176);
+  --Warning-200: rgb(251, 226, 138);
+  --Warning-300: rgb(249, 213, 84);
+  --Warning-400: rgb(248, 205, 51);
+  --Warning-500: rgb(246, 192, 0);
+  --Warning-600: rgb(224, 175, 0);
+  --Warning-700: rgb(175, 136, 0);
+  --Warning-800: rgb(135, 106, 0);
+  --Warning-900: rgb(103, 81, 0);
+  /* Success */
+  --Success-50: rgb(230, 245, 239);
+  --Success-100: rgb(177, 225, 204);
+  --Success-200: rgb(140, 210, 180);
+  --Success-300: rgb(87, 190, 145);
+  --Success-400: rgb(54, 177, 124);
+  --Success-500: rgb(4, 158, 91);
+  --Success-600: rgb(4, 144, 83);
+  --Success-700: rgb(3, 112, 65);
+  --Success-800: rgb(2, 87, 50);
+  --Success-900: rgb(2, 66, 38);
+  /* Error */
+  --Error-50: rgb(249, 232, 232);
+  --Error-100: rgb(238, 184, 184);
+  --Error-200: rgb(229, 150, 150);
+  --Error-300: rgb(217, 102, 102);
+  --Error-400: rgb(210, 72, 72);
+  --Error-500: rgb(199, 26, 26);
+  --Error-600: rgb(181, 24, 24);
+  --Error-700: rgb(141, 18, 18);
+  --Error-800: rgb(109, 14, 14);
+  --Error-900: rgb(84, 11, 11);
+  /*shadcn theme  */
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -117,6 +240,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-vazir;
   }
 }

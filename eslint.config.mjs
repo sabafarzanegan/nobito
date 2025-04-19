@@ -1,69 +1,18 @@
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import pluginReact from 'eslint-plugin-react';
+import { defineConfig } from 'eslint/config';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-export default [
-  ...compat.extends(
-    'next/core-web-vitals',
-    'next',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    'prettier',
-  ),
-
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-    languageOptions: {
-      parserOptions: {
-        project: './tsconfig.json',
-        sourceType: 'module',
-      },
-    },
-    rules: {
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        {
-          vars: 'all',
-          args: 'after-used',
-          argsIgnorePattern: '^_',
-          ignoreRestSiblings: true,
-        },
-      ],
-
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
-    },
-  },
-
-  {
-    files: ['**/*.js', '**/*.jsx'],
-    languageOptions: {
-      sourceType: 'module',
-    },
-    rules: {
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
-    },
-  },
-
+export default defineConfig([
+  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'], plugins: { js }, extends: ['js/recommended'] },
+  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'], languageOptions: { globals: globals.browser } },
   {
     rules: {
-      'import/order': [
-        'warn',
-        {
-          groups: [['builtin', 'external'], 'internal', ['sibling', 'parent'], 'index'],
-          'newlines-between': 'always',
-          alphabetize: { order: 'asc', caseInsensitive: true },
-        },
-      ],
-
-      'no-unused-vars': 'off',
+      'no-unused-vars': 'warn',
+      'no-undef': 'warn',
     },
   },
-];
+  tseslint.configs.recommended,
+  pluginReact.configs.flat.recommended,
+]);

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import { Vazirmatn, Geist } from 'next/font/google';
+import { Vazirmatn } from 'next/font/google';
 import './globals.css';
+import Header from '@/components/header/Header';
 
 const vazir = Vazirmatn({
   variable: '--font-vazir',
@@ -19,8 +20,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={` ${vazir.variable} antialiased`}>{children}</body>
+    <html lang="fa" dir="rtl">
+      <body
+        className={` ${vazir.className} antialiased min-w-[360px] max-w-[1440px] w-full px-4 lg:px-28 min-h-svh mx-auto`}
+      >
+        <main className="mx-auto">
+          <Header />
+          {children}
+          {/* footer */}
+        </main>
+      </body>
     </html>
   );
 }

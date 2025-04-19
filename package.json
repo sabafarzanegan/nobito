@@ -12,8 +12,10 @@
     "check": "npm run format"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "iconsax-reactjs": "^0.0.8",
     "lucide-react": "^0.487.0",
     "next": "15.3.0",
     "react": "^19.0.0",

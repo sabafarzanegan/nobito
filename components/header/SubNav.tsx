@@ -16,7 +16,7 @@ function SubNav() {
         <ul className="flex items-center gap-x-6">
           {subnavLinks.map(link => (
             <Link href="/" key={link.id}>
-              <li className="text-T2 text-gray-500">{link.name}</li>
+              <li className="text-t2 text-gray-500">{link.name}</li>
             </Link>
           ))}
         </ul>

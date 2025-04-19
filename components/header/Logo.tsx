@@ -19,7 +19,7 @@ function Logo() {
             alt="brand"
             width={62}
             height={29}
-            className="w-[45px] h-[21px] md:w-[62px] md:h-[29px]"
+            className="w-[40px] h-[21px] md:w-[62px] md:h-[29px]"
           />
         </div>
         <p className="mt-3 text-[#515151] font-semibold  text-tiny md:text-md">

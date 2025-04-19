@@ -1,5 +1,11 @@
+import Landing from '@/components/landing/Landing';
+
 function page() {
-  return <div></div>;
+  return (
+    <div>
+      <Landing />
+    </div>
+  );
 }
 
 export default page;

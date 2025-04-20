@@ -1,9 +1,7 @@
-import Image from 'next/image';
 import SignUpBtn from '../auth/SignUpBtn';
 import Logo from './Logo';
 import Menu from './Menu';
 import MobileNav from './MobileNav';
-import { HamburgerMenu } from 'iconsax-reactjs';
 
 function Navbar() {
   return (

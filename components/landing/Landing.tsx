@@ -14,7 +14,7 @@ function Landing() {
               className="w-[18px] h-[18px] md:w-[26px] md:h-[24px]"
             />
           </div>
-          <div className=" text-t1 md:text-d2 text-white font-bold flex items-center justify-center flex-col mb-8 space-y-1.5">
+          <div className=" text-t1 md:text-d2 text-white font-bold flex items-center justify-center flex-col  space-y-1.5">
             <p>
               تلاش ما دسترسی{' '}
               <span className="bg-secondary-200 text-primary-500 rounded-md px-2">

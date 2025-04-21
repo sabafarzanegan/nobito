@@ -42,7 +42,7 @@ function Landing() {
           </div>
         </div>
       </div>
-      <div className="px-4 absolute -bottom-5 md: left-1/2 -translate-x-1/2 z-10 min-w-[300px] max-w-[700px] w-full ">
+      <div className="px-4 absolute -bottom-5 md: left-1/2 -translate-x-1/2 z-10 min-w-[300px] max-w-[800px] w-full ">
         <SearchBar />
       </div>
     </div>

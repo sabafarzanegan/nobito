@@ -1,6 +1,7 @@
 import { HamburgerMenu } from 'iconsax-reactjs';
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetFooter,
   SheetHeader,
@@ -27,12 +28,18 @@ function MobileNav() {
           <ul className="flex  justify-center flex-col gap-y-5 mt-2 px-3 border-b-2 border-b-gray-300 py-3.5">
             {NavLinks.map(link => (
               <Link className="text-t2 text-gray-600" href="/" key={link.name}>
-                <li>{link.name}</li>
+                <SheetClose>
+                  <li>{link.name}</li>
+                </SheetClose>
               </Link>
             ))}
           </ul>
           <div className="px-4">
-            <Button className="text-white px-5 py-3 bg-primary-500 ">ورود/ثبت نام</Button>
+            <Button asChild className="text-white px-5 py-3 bg-primary-500 ">
+              <Link href="/login">
+                <SheetClose>ورود/ثبت نام</SheetClose>
+              </Link>
+            </Button>
           </div>
         </SheetContent>
       </Sheet>

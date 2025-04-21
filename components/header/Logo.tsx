@@ -1,17 +1,21 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Logo() {
   return (
     <div className="flex gap-x-2 items-center">
-      <div>
-        <Image
-          src="/images/Logo-1.svg"
-          width={65}
-          height={61}
-          alt="logo"
-          className="w-[48px] h-[45px] md:w-[65px] md:h-[61px]"
-        />
-      </div>
+      <Link href="/">
+        <div>
+          <Image
+            src="/images/Logo-1.svg"
+            width={65}
+            height={61}
+            alt="logo"
+            className="w-[48px] h-[45px] md:w-[65px] md:h-[61px]"
+          />
+        </div>
+      </Link>
+
       <div>
         <div>
           <Image

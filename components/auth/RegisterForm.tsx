@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
 import { Input } from '../ui/input';
 import { registerFormSchema } from '@/lib/schema/authSchema';
@@ -8,8 +8,14 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '../ui/button';
+import { addRegister } from '@/actions/formaction';
+import { toast } from 'sonner';
+import { Loader } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 function RegisterForm() {
+  const router = useRouter();
   const form = useForm<z.infer<typeof registerFormSchema>>({
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
@@ -19,8 +25,31 @@ function RegisterForm() {
       confirmPassword: '',
     },
   });
-  function onSubmit(values: z.infer<typeof registerFormSchema>) {
+  async function onSubmit(values: z.infer<typeof registerFormSchema>) {
     console.log(values);
+    try {
+      const res = await addRegister(values);
+      if (res?.error) {
+        toast.error(res.message, {
+          style: {
+            background: '#F9E8E8',
+            borderColor: '#F9E8E8',
+            color: '#8D1212',
+            textAlign: 'center',
+          },
+        });
+      } else {
+        router.push('/login');
+        toast.success('ثبت نام شما با موفقیت انجام شد', {
+          style: {
+            background: '##E6F5EF',
+            borderColor: '##E6F5EF',
+            color: '##025732',
+            textAlign: 'center',
+          },
+        });
+      }
+    } catch (error) {}
   }
   return (
     <Card className="">
@@ -89,12 +118,26 @@ function RegisterForm() {
                 </FormItem>
               )}
             />
-            <Button className="w-full bg-primary-500 text-white" type="submit">
-              ثبت نام
+            <Button
+              disabled={form.formState.isSubmitting}
+              className="w-full bg-primary-500 text-white disabled:bg-primary-800 disabled:opacity-60"
+              type="submit"
+            >
+              {form.formState.isSubmitting ? (
+                <Loader className="animate-spin transition-all duration-200 size-6" />
+              ) : (
+                'ثبت نام'
+              )}
             </Button>
           </form>
         </Form>
       </CardContent>
+      <CardFooter className="flex items-center justify-between">
+        <p className="text-gray-500">قبلا ثبت نام کرده اید؟</p>
+        <Button asChild variant="link" className="text-primary-500">
+          <Link href="/login">صفحه ورود</Link>
+        </Button>
+      </CardFooter>
     </Card>
   );
 }

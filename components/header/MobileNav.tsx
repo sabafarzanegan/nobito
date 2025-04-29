@@ -3,7 +3,6 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -11,15 +10,16 @@ import {
 
 import { NavLinks } from '@/lib/helper';
 import Link from 'next/link';
-import SignUpBtn from '../auth/SignUpBtn';
 import { Button } from '../ui/button';
+import { auth } from '@/auth';
 
-function MobileNav() {
+async function MobileNav() {
+  const session = await auth();
   return (
     <div className="block md:hidden">
       <Sheet>
         <SheetTrigger>
-          <HamburgerMenu size="24" color="#757575" />
+          <HamburgerMenu size="24" color="#757575" className="mt-2" />
         </SheetTrigger>
         <SheetContent className="w-[400px] sm:w-[540px]">
           <SheetHeader>
@@ -35,11 +35,13 @@ function MobileNav() {
             ))}
           </ul>
           <div className="px-4">
-            <Button asChild className="text-white px-5 py-3 bg-primary-500 ">
-              <Link href="/login">
-                <SheetClose>ورود/ثبت نام</SheetClose>
-              </Link>
-            </Button>
+            {!session?.user?.id && (
+              <Button asChild className="text-white px-5 py-3 bg-primary-500 ">
+                <Link href="/login">
+                  <SheetClose>ورود/ثبت نام</SheetClose>
+                </Link>
+              </Button>
+            )}
           </div>
         </SheetContent>
       </Sheet>

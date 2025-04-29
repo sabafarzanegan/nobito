@@ -1,8 +1,13 @@
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { auth } from '@/auth';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 import { ReactNode } from 'react';
 
-function layout({ children }: { children: ReactNode }) {
+async function layout({ children }: { children: ReactNode }) {
+  const session = await auth();
+  if (session?.user?.id) {
+    redirect('/');
+  }
   return (
     <div className="h-svh flex items-center justify-center flex-col relative">
       <div></div>

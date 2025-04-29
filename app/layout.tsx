@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Vazirmatn } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/header/Header';
-
+import { Toaster } from '@/components/ui/sonner';
 const vazir = Vazirmatn({
   variable: '--font-vazir',
   subsets: ['arabic'],
@@ -22,13 +22,14 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={` ${vazir.className} antialiased  w-full min-w-[300px] max-w-[1440px] w-full min-h-svh mx-auto`}
+        className={` ${vazir.className} antialiased   min-w-[300px] max-w-[1440px] w-full min-h-svh mx-auto`}
       >
         <main className="mx-auto">
           <Header />
           {children}
           {/* footer */}
         </main>
+        <Toaster />
       </body>
     </html>
   );

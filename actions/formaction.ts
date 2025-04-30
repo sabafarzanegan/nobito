@@ -7,8 +7,7 @@ import { loginFormSchema, registerFormSchema, updatePassSchema } from '@/lib/sch
 
 import { hash } from 'bcryptjs';
 import { randomBytes } from 'crypto';
-import { redirect } from 'next/navigation';
-import { Resend } from 'resend';
+
 // register form action
 
 export const addRegister = async ({

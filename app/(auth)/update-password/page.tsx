@@ -1,46 +1,44 @@
-import UpdatePassForm from '@/components/auth/UpdatePassForm';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import UpdatePassServerWrapper from '@/components/auth/UpdatePassServerWrapper';
 import db from '@/db';
-import Link from 'next/link';
+import React from 'react';
 
-async function page({ searchParams }: { searchParams: { token?: string } }) {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ token?: string }>;
+}) {
+  const { token } = await searchParams;
+  console.log(token);
   let tokenIsValid = false;
-  const { token } = searchParams;
-  if (token) {
+
+  if (!token) {
+    tokenIsValid = false;
+    return;
+  }
+  try {
     const passwordResetTokens = await db.passwordResetToken.findFirst({
       where: {
-        token: token,
+        token: token as string,
       },
     });
+
     const now = Date.now();
     if (
-      !!passwordResetTokens?.tokenExpiration &&
+      passwordResetTokens?.tokenExpiration &&
       now < passwordResetTokens.tokenExpiration.getTime()
     ) {
       tokenIsValid = true;
+    } else {
+      tokenIsValid = false;
     }
+  } catch (err) {
+    console.error('Error validating token:', err);
+    tokenIsValid = false;
   }
+
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>
-          {tokenIsValid ? 'بازیابی رمز عبور' : 'رمز عبور فرستاده شده به ایمیل شما منقضی شده است'}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        {tokenIsValid ? (
-          <div>
-            <UpdatePassForm />
-          </div>
-        ) : (
-          <Button variant="link" className="text-primary-500">
-            <Link href="/reset-password">بازیابی رمز عبور</Link>
-          </Button>
-        )}
-      </CardContent>
-    </Card>
+    <div>
+      <UpdatePassServerWrapper tokenIsValid={tokenIsValid} />
+    </div>
   );
 }
-
-export default page;

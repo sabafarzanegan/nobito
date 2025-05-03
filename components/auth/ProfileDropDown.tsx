@@ -17,6 +17,7 @@ import {
 import { auth } from '@/auth';
 import { Logout, Profile, UserTick } from 'iconsax-reactjs';
 import { SignOutBtn } from './signout-button';
+import Link from 'next/link';
 
 async function ProfileDropDown() {
   const session = await auth();
@@ -33,11 +34,13 @@ async function ProfileDropDown() {
         <DropdownMenuLabel>{session?.user?.email}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            حساب کاربری
-            <DropdownMenuShortcut>
-              <Profile size="32" color="#d9e3f0" variant="Bold" />
-            </DropdownMenuShortcut>
+          <DropdownMenuItem asChild className="cursor-pointer">
+            <Link href="/Dashboard-user/user-info">
+              حساب کاربری
+              <DropdownMenuShortcut>
+                <Profile size="32" color="#d9e3f0" variant="Bold" />
+              </DropdownMenuShortcut>
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuItem>

@@ -27,6 +27,7 @@ model User {
   city   String?
   state   String?
   code   String?
+  phonenumber String?
   role    Role     @default(USER)
   passwordResetTokens PasswordResetToken[]
   createdAt DateTime @default(now())

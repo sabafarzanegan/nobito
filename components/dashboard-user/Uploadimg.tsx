@@ -6,28 +6,24 @@ import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
 function Uploadimg({
-  profilePicture,
+  profilePicture = '/image/pic.svg',
   email,
 }: {
   profilePicture: string | undefined | null;
   email: string;
 }) {
-  const [image, setImage] = useState<File | null>(null);
-  const [prevImg, setPrevImg] = useState<string>('/images/pic.svg');
+  const [prevImg, setPrevImg] = useState<string>('');
+  const [isLoading, setIsloading] = useState(false);
   const router = useRouter();
-  const handelfilechnge = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const file = e.target.files[0];
-      const newPrevUrl = URL.createObjectURL(file);
-      setImage(file);
-      setPrevImg(newPrevUrl);
-    }
-  };
+  const handelfilechnge = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setPrevImg(URL.createObjectURL(file));
 
-  const handelupload = async () => {
-    if (!image?.name) return;
+    setIsloading(true);
+
     const formData = new FormData();
-    formData.append('file', image);
+    formData.append('file', file);
     formData.append('upload_preset', 'unsigned-upload');
     formData.append('cloud_name', 'dko1fxu7r');
 
@@ -37,26 +33,25 @@ function Uploadimg({
         body: formData,
       });
       const data = await res.json();
-      console.log(data);
+      if (!data) {
+        return toast.error('خطا در بارگزاری تصویر');
+      }
+      const result = await addImgProfile({ email, image: data.secure_url });
 
-      if (!data) return;
-      setImage(null);
-      const resultes = await addImgProfile({ email: email, image: data.secure_url });
-      if (resultes.error) {
-        toast.error(resultes.message);
-      } else {
+      if (!result.error) {
         router.refresh();
-        toast.success(resultes.message);
+        toast.success(result.message);
+      } else {
+        toast.error(result.message);
       }
     } catch (error) {
-      console.error('Error uploading image: ', error);
-      return null;
+      console.error('Error uploading image:', error);
+      toast.error('مشکلی در آپلود تصویر پیش آمد.');
+    } finally {
+      setIsloading(false);
     }
   };
 
-  useEffect(() => {
-    handelupload();
-  }, [image]);
   return (
     <div className="relative mb-[50px]">
       <div>
@@ -65,13 +60,14 @@ function Uploadimg({
       <div className="absolute   left-1/2 translate-x-[-50%] bottom-[10px] ">
         <label className="cursor-pointer" htmlFor="upload-file">
           <Image
-            src={profilePicture || prevImg}
+            src={`${isLoading ? prevImg : profilePicture}`}
             width={120}
             height={120}
             alt="profile picture"
-            className="rounded-full w-[120px] h-[120px]"
+            className={`rounded-full w-[120px] h-[120px] ${isLoading && 'opacity-65'}`}
           />
         </label>
+
         <input
           type="file"
           className="hidden"
@@ -79,6 +75,8 @@ function Uploadimg({
           accept="image/*"
           onChange={handelfilechnge}
         />
+
+        {isLoading && <p className="text-sm text-gray-500 mt-2 text-center">در حال آپلود...</p>}
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={` ${vazir.className} antialiased   min-w-[300px] max-w-[1440px] w-full min-h-svh mx-auto bg-gray-100`}
+        className={` ${vazir.className} antialiased   min-w-[300px] max-w-[1440px] w-full min-h-svh mx-auto `}
       >
         <main className="mx-auto">
           <Header />

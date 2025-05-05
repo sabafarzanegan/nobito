@@ -4,9 +4,9 @@ import React from 'react';
 
 function page() {
   return (
-    <Card className="p-6 bg-white rounded-lg">
-      <CardHeader className="border-b border-b-gray-500">
-        <CardTitle className="text-t1 text-gray-500">اطلاعات حساب کاربری</CardTitle>
+    <Card className="p-6 bg-white rounded-lg w-full">
+      <CardHeader className="border-b border-b-gray-200">
+        <CardTitle className="text-t1 text-[#414141] font-normal">اطلاعات حساب کاربری</CardTitle>
       </CardHeader>
       <CardContent>
         <UserInfoForm />

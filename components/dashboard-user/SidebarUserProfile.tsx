@@ -9,7 +9,7 @@ async function SidebarUserProfile() {
   const res = await getUserImgbyEmail(session?.user?.email!);
 
   return (
-    <aside className="p-6 max-w-[360px] max-h-[850px] w-full h-full rounded-lg bg-white border">
+    <aside className="p-6 max-w-[330px] max-h-[850px] w-full h-full rounded-lg bg-white border hidden md:block">
       <Uploadimg profilePicture={res?.profilepicture} email={session?.user?.email!} />
       <div></div>
       {/* list item */}

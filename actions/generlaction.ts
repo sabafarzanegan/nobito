@@ -16,6 +16,17 @@ export const getUserImgbyEmail = async (email: string) => {
   } catch (error) {}
 };
 
+export const getUserByEmail = async (email: string) => {
+  try {
+    const res = await db.user.findFirst({
+      where: {
+        email,
+      },
+    });
+    return res;
+  } catch (error) {}
+};
+
 export const addImgProfile = async ({ email, image }: { email: string; image: string }) => {
   try {
     const res = await db.user.update({

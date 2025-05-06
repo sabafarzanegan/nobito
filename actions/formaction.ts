@@ -1,11 +1,17 @@
 'use server';
 
-import { auth, signIn } from '@/auth';
+import { auth, signIn, signOut } from '@/auth';
 import db from '@/db';
 import { resend } from '@/lib/email';
-import { loginFormSchema, registerFormSchema, updatePassSchema } from '@/lib/schema/authSchema';
+import {
+  ChangepassSchema,
+  loginFormSchema,
+  registerFormSchema,
+  updatePassSchema,
+} from '@/lib/schema/authSchema';
 
 import { hash } from 'bcryptjs';
+import { error } from 'console';
 import { randomBytes } from 'crypto';
 
 // register form action
@@ -94,7 +100,6 @@ export const loginWithCredentials = async ({
 };
 
 // create token
-
 
 // reset password action
 
@@ -224,4 +229,52 @@ export const updatePassword = async ({
       });
     }
   } catch (error) {}
+};
+
+export const signOutForm = async () => {
+  await signOut();
+};
+
+// change pass action
+
+export const changePassAction = async ({
+  password,
+  confirmPassword,
+}: {
+  password: string;
+  confirmPassword: string;
+}) => {
+  const userValidation = ChangepassSchema.safeParse({ password, confirmPassword });
+
+  if (!userValidation.success) {
+    return {
+      error: true,
+      message: 'خطا در اطلاعات ورودی',
+    };
+  }
+
+  try {
+    const session = await auth();
+    if (!session?.user?.id) return;
+    const newpass = await hash(password, 10);
+    await db.user.update({
+      where: {
+        email: session.user.email as string,
+      },
+      data: {
+        password: newpass,
+      },
+    });
+    return {
+      error: false,
+      message: 'رمز عبور با موفقیت تغییر کرد',
+    };
+  } catch (error) {
+    console.log(error);
+
+    return {
+      error: true,
+      message: 'خطا در ارسال اطلاعات',
+    };
+  }
 };

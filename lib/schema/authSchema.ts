@@ -46,3 +46,20 @@ export const updatePassSchema = z
       });
     }
   });
+
+export const ChangepassSchema = z
+  .object({
+    password: z.string().min(8, 'رمز عبور حداقل 8 رقم باشد').regex(passwordValidation, {
+      message: 'رمز عبور باید شامل علامت (!@#$%^&*)وشامل یک حرف بزرگ و کوچک',
+    }),
+    confirmPassword: z.string(),
+  })
+  .superRefine((val, clx) => {
+    if (val.password !== val.confirmPassword) {
+      clx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['confirmPassword'],
+        message: 'تکرار رمز عبور اشتباه است',
+      });
+    }
+  });

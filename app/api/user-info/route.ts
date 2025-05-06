@@ -6,6 +6,7 @@ import { NextResponse } from 'next/server';
 export async function POST(req: Request) {
   try {
     const session = await auth();
+    if (!session?.user) return;
     const body = await req.json(); // دریافت داده‌های JSON از درخواست
 
     const parsed = userInfoSchema.safeParse(body);
@@ -20,7 +21,7 @@ export async function POST(req: Request) {
     console.log('✅ داده‌های معتبر فرم:', data);
     await db.user.update({
       where: {
-        email: session?.user?.email!,
+        email: session?.user?.email as string,
       },
       data: {
         name: data.name,

@@ -53,7 +53,7 @@ function Uploadimg({
   };
 
   return (
-    <div className="relative mb-[50px]">
+    <div className="relative mb-[35px]">
       <div>
         <Image src="/images/profile pic.svg" width={336} height={120} alt="profile back" />
       </div>
@@ -61,10 +61,10 @@ function Uploadimg({
         <label className="cursor-pointer" htmlFor="upload-file">
           <Image
             src={`${isLoading ? prevImg : profilePicture}`}
-            width={120}
-            height={120}
+            width={110}
+            height={110}
             alt="profile picture"
-            className={`rounded-full w-[120px] h-[120px] ${isLoading && 'opacity-65'}`}
+            className={`rounded-full w-[110px] h-[110px] ${isLoading && 'opacity-65'}`}
           />
         </label>
 

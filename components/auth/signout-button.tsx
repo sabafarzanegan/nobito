@@ -1,15 +1,11 @@
-import { signOut } from '@/auth';
 import { Button } from '../ui/button';
+import { ReactNode } from 'react';
+import { signOutForm } from '@/actions/formaction';
 
 export function SignOutBtn() {
   return (
-    <form
-      action={async () => {
-        'use server';
-        await signOut();
-      }}
-    >
-      <Button variant="destructive" type="submit" className="cursor-pointer py-1 px-7">
+    <form action={signOutForm} className="">
+      <Button type="submit" className="cursor-pointer px-2 py-0.5">
         خروج
       </Button>
     </form>

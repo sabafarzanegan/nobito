@@ -16,17 +16,18 @@ import { userInfoSchema } from '@/lib/schema/userprofileSchem';
 import { z } from 'zod';
 import { Loader } from 'lucide-react';
 import { toast } from 'sonner';
+import { User } from '@/lib/type';
 
-function UserInfoForm() {
+function UserInfoForm({ userInfo }: { userInfo: User | undefined | null }) {
   const form = useForm<z.infer<typeof userInfoSchema>>({
     resolver: zodResolver(userInfoSchema),
     defaultValues: {
-      name: '',
-      familyname: '',
-      code: '',
-      phonenumber: '',
-      city: '',
-      state: '',
+      name: userInfo?.name ?? '',
+      familyname: userInfo?.familyname ?? '',
+      code: userInfo?.code ?? '',
+      phonenumber: userInfo?.phonenumber ?? '',
+      city: userInfo?.city ?? '',
+      state: userInfo?.state ?? '',
     },
   });
 

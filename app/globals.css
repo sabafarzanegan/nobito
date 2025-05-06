@@ -46,7 +46,8 @@
   --color-primary-700: rgb(22, 80, 74);
   --color-primary-800: rgb(17, 62, 57);
   --color-primary-900: rgb(13, 47, 44);
-  /* secondary */
+  --color-text-02: '#414141' /* secondary */;
+
   --color-secondary-50: rgb(255, 247, 236);
   --color-secondary-100: rgb(255, 231, 196);
   --color-secondary-200: rgb(255, 220, 168);
@@ -91,16 +92,16 @@
   --color-Black-800: rgb(10, 10, 10);
   --color-Black-900: rgb(8, 8, 8);
   /* Gray */
-  --color-Gray-50: rgb(241, 241, 241);
-  --color-Gray-100: rgb(212, 212, 212);
-  --color-Gray-200: rgb(192, 192, 192);
-  --color-Gray-300: rgb(163, 163, 163);
-  --color-Gray-400: rgb(145, 145, 145);
-  --color-Gray-500: rgb(117, 117, 117);
-  --color-Gray-600: rgb(106, 106, 106);
-  --color-Gray-700: rgb(83, 83, 83);
-  --color-Gray-800: rgb(64, 64, 64);
-  --color-Gray-900: rgb(49, 49, 49);
+  --color-gray-50: rgb(241, 241, 241);
+  --color-gray-100: rgb(212, 212, 212);
+  --color-gray-200: rgb(192, 192, 192);
+  --color-gray-300: rgb(163, 163, 163);
+  --color-gray-400: rgb(145, 145, 145);
+  --color-gray-500: rgb(117, 117, 117);
+  --color-gray-600: rgb(106, 106, 106);
+  --color-gray-700: rgb(83, 83, 83);
+  --color-gray-800: rgb(64, 64, 64);
+  --color-gray-900: rgb(49, 49, 49);
   /* Warning */
   --color-Warning-50: rgb(254, 249, 230);
   --color-Warning-100: rgb(252, 235, 176);
@@ -124,16 +125,16 @@
   --color-Success-800: rgb(2, 87, 50);
   --color-Success-900: rgb(2, 66, 38);
   /* Error */
-  --color-Error-50: rgb(249, 232, 232);
-  --color-Error-100: rgb(238, 184, 184);
-  --color-Error-200: rgb(229, 150, 150);
-  --color-Error-300: rgb(217, 102, 102);
-  --color-Error-400: rgb(210, 72, 72);
-  --color-Error-500: rgb(199, 26, 26);
-  --color-Error-600: rgb(181, 24, 24);
-  --color-Error-700: rgb(141, 18, 18);
-  --color-Error-800: rgb(109, 14, 14);
-  --color-Error-900: rgb(84, 11, 11);
+  --color-error-100: rgb(238, 184, 184);
+  --color-error-50: rgb(249, 232, 232);
+  --color-error-200: rgb(229, 150, 150);
+  --color-error-300: rgb(217, 102, 102);
+  --color-error-400: rgb(210, 72, 72);
+  --color-error-500: rgb(199, 26, 26);
+  --color-error-600: rgb(181, 24, 24);
+  --color-error-700: rgb(141, 18, 18);
+  --color-error-800: rgb(109, 14, 14);
+  --color-error-900: rgb(84, 11, 11);
 
   /*shadcn theme  */
   --color-sidebar-ring: var(--sidebar-ring);

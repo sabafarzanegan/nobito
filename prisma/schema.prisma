@@ -45,6 +45,40 @@ model PasswordResetToken {
   userId          Int      @unique
   token           String
   tokenExpiration DateTime
-
   user            User     @relation(fields: [userId], references: [id])
+}
+
+model Doctor{
+   id      Int      @id @default(autoincrement())
+   name String
+   expertise String
+   registrationnumber String
+   description String?
+   location  String
+   address   String
+   phonenum  String
+   profilePicture String
+   doctorServices DoctorServices[]
+   bookingmethod Bookingmethod  @default(Inperson)
+   clinicfeature  ClinicFeatures[]
+}
+
+model DoctorServices{
+   id      Int      @id @default(autoincrement())
+   doctorId Int      
+   doctor  Doctor   @relation(fields: [doctorId],references: [id])
+   name String
+}
+
+enum Bookingmethod {
+  Phoneconsultation
+  Onlinemeeting
+  Inperson
+}
+
+model ClinicFeatures {
+  id      Int      @id @default(autoincrement())
+  doctorId Int      
+  doctor  Doctor   @relation(fields: [doctorId],references: [id])
+  featureName String
 }

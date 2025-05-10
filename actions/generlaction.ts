@@ -53,6 +53,12 @@ export const getDoctors = async () => {
         expertise: true,
         id: true,
         profilePicture: true,
+        bookingmethod: true,
+        clinicfeature: true,
+        description: true,
+        location: true,
+        phonenum: true,
+        registrationnumber: true,
       },
     });
     return res;

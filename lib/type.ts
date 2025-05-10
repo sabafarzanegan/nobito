@@ -21,6 +21,12 @@ export interface doctorServices {
   name: string;
 }
 
+export interface clinicfeature {
+  id: number;
+  doctorId: number;
+  featureName: string;
+}
+
 export interface Doctor {
   id: number;
   name: string;
@@ -28,4 +34,10 @@ export interface Doctor {
   address: string;
   doctorServices: doctorServices[];
   expertise: string;
+  bookingmethod: 'Phoneconsultation' | 'Onlinemeeting' | 'Inperson';
+  description?: string | undefined | null;
+  location: string;
+  phonenum: string;
+  registrationnumber: string;
+  clinicfeature: clinicfeature[];
 }

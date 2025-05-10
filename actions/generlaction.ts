@@ -42,3 +42,19 @@ export const addImgProfile = async ({ email, image }: { email: string; image: st
     return { error: true, message: 'خطا در ارسال عکس دوباره تلاش کنید' };
   }
 };
+
+export const getDoctors = async () => {
+  try {
+    const res = await db.doctor.findMany({
+      select: {
+        doctorServices: true,
+        name: true,
+        address: true,
+        expertise: true,
+        id: true,
+        profilePicture: true,
+      },
+    });
+    return res;
+  } catch (error) {}
+};

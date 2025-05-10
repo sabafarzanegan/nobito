@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: 'res.cloudinary.com',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.paziresh24.com',
+        pathname: '**',
+      },
     ],
   },
 };

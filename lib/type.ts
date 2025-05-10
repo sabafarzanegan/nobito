@@ -14,3 +14,18 @@ export interface User {
   updatedAt: Date;
   username: string;
 }
+
+export interface doctorServices {
+  id: number;
+  doctorId: number;
+  name: string;
+}
+
+export interface Doctor {
+  id: number;
+  name: string;
+  profilePicture: string;
+  address: string;
+  doctorServices: doctorServices[];
+  expertise: string;
+}

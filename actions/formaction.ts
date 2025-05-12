@@ -13,6 +13,7 @@ import {
 import { hash } from 'bcryptjs';
 import { error } from 'console';
 import { randomBytes } from 'crypto';
+import { redirect } from 'next/navigation';
 
 // register form action
 
@@ -233,6 +234,7 @@ export const updatePassword = async ({
 
 export const signOutForm = async () => {
   await signOut();
+  redirect('/login');
 };
 
 // change pass action

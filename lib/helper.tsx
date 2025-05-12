@@ -19,25 +19,25 @@ export const UserprofileLinks = [
   {
     id: 1,
     name: 'اطلاعات حساب کاربری',
-    link: '/user-info',
+    link: 'user-info',
     icon: (color: string) => <User size="20" color={color} />,
   },
   {
     id: 2,
     name: 'تاریخچه نوبت ها',
-    link: '/booking-history',
+    link: 'booking-history',
     icon: (color: string) => <Calendar size="20" color={color} />,
   },
   {
     id: 3,
     name: 'بازخوردها',
-    link: '/comments',
+    link: 'comments',
     icon: (color: string) => <Message size="20" color={color} />,
   },
   {
     id: 4,
     name: 'رمز عبور',
-    link: '/change-pass',
+    link: 'change-pass',
     icon: (color: string) => <Key size="20" color={color} />,
   },
 ];

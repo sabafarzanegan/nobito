@@ -7,7 +7,7 @@ function page() {
     <div className="">
       <Landing />
       {/* doctor slider */}
-      <div className="mt-4">
+      <div className="mt-4 px-4 md:px-28">
         <DoctorSliderContainer />
       </div>
     </div>

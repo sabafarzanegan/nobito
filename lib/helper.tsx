@@ -1,4 +1,12 @@
-import { Calendar, Key, LoginCurve, Message, User } from 'iconsax-reactjs';
+import {
+  Calendar,
+  CallCalling,
+  DeviceMessage,
+  Key,
+  LoginCurve,
+  Message,
+  User,
+} from 'iconsax-reactjs';
 
 export const NavLinks = [
   { id: 1, name: 'نوبت دهی مطب' },
@@ -39,5 +47,26 @@ export const UserprofileLinks = [
     name: 'رمز عبور',
     link: 'change-pass',
     icon: (color: string) => <Key size="20" color={color} />,
+  },
+];
+
+export const bookingMethodes = [
+  {
+    id: 1,
+    name: 'تلفنی',
+    link: 'Phoneconsultation',
+    icon: (color: string) => <CallCalling size="64" color={color} />,
+  },
+  {
+    id: 2,
+    name: 'حضوری',
+    link: 'Inperson',
+    icon: (color: string) => <User size="64" color={color} />,
+  },
+  {
+    id: 3,
+    name: 'آنلاین',
+    link: 'Onlinemeeting',
+    icon: (color: string) => <DeviceMessage size="64" color={color} />,
   },
 ];

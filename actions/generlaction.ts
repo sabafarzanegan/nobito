@@ -46,19 +46,24 @@ export const addImgProfile = async ({ email, image }: { email: string; image: st
 export const getDoctors = async () => {
   try {
     const res = await db.doctor.findMany({
-      select: {
-        doctorServices: true,
-        name: true,
-        address: true,
-        expertise: true,
-        id: true,
-        profilePicture: true,
-        bookingmethod: true,
+      include: {
         clinicfeature: true,
-        description: true,
-        location: true,
-        phonenum: true,
-        registrationnumber: true,
+        doctorServices: true,
+      },
+    });
+    return res;
+  } catch (error) {}
+};
+
+export const getDoctorById = async ({ doctorId }: { doctorId: string }) => {
+  try {
+    const res = await db.doctor.findFirst({
+      where: {
+        id: Number(doctorId),
+      },
+      include: {
+        doctorServices: true,
+        clinicfeature: true,
       },
     });
     return res;

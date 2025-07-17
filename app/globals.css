@@ -13,7 +13,7 @@
   /* font size */
   /* heading */
   --text-tiny: 0.815rem;
-  --text-he1: 2rem;
+  --text-h1: 2rem;
   --text-h2: 1.75rem;
   --text-h3: 1.5rem;
   /* display */
@@ -46,7 +46,7 @@
   --color-primary-700: rgb(22, 80, 74);
   --color-primary-800: rgb(17, 62, 57);
   --color-primary-900: rgb(13, 47, 44);
-  --color-text-02: '#414141' /* secondary */;
+  --color-ashes-02: '#414141';
 
   --color-secondary-50: rgb(255, 247, 236);
   --color-secondary-100: rgb(255, 231, 196);
@@ -81,16 +81,16 @@
   --color-White-800: rgb(137, 137, 137);
   --color-White-900: rgb(105, 105, 105);
   /* Black */
-  --color-Black-50: rgb(231, 231, 231);
-  --color-Black-100: rgb(182, 182, 182);
-  --color-Black-200: rgb(146, 146, 146);
-  --color-Black-300: rgb(96, 96, 96);
-  --color-Black-400: rgb(65, 65, 65);
-  --color-Black-500: rgb(18, 18, 18);
-  --color-Black-600: rgb(16, 16, 16);
-  --color-Black-700: rgb(13, 13, 13);
-  --color-Black-800: rgb(10, 10, 10);
-  --color-Black-900: rgb(8, 8, 8);
+  --color-black-50: rgb(231, 231, 231);
+  --color-black-100: rgb(182, 182, 182);
+  --color-black-200: rgb(146, 146, 146);
+  --color-black-300: rgb(96, 96, 96);
+  --color-black-400: rgb(65, 65, 65);
+  --color-black-500: rgb(18, 18, 18);
+  --color-black-600: rgb(16, 16, 16);
+  --color-black-700: rgb(13, 13, 13);
+  --color-black-800: rgb(10, 10, 10);
+  --color-black-900: rgb(8, 8, 8);
   /* Gray */
   --color-gray-50: rgb(241, 241, 241);
   --color-gray-100: rgb(212, 212, 212);
@@ -180,8 +180,8 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  /* --primary: oklch(0.205 0 0); */
-  /* --primary-foreground: oklch(0.985 0 0); */
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
@@ -248,4 +248,12 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.clip-path-right {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 3% 100%);
+}
+
+.clip-path-left {
+  clip-path: polygon(0 0, 97% 0, 100% 100%, 0% 100%);
 }

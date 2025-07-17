@@ -6,7 +6,11 @@ async function DoctorSliderContainer() {
   const doctors = await getDoctors();
   console.log(doctors);
 
-  return <div>{doctors?.map(doctor => <DochoomeCard key={doctor.id}  doctor={doctor}/>)}</div>;
+  return (
+    <div className="flex items-center gap-x-5">
+      {doctors?.map(doctor => <DochoomeCard key={doctor.id} doctor={doctor} />)}
+    </div>
+  );
 }
 
 export default DoctorSliderContainer;

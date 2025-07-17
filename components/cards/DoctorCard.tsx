@@ -4,6 +4,7 @@ import { Doctor } from '@/lib/type';
 import { Badge } from '../ui/badge';
 import { ArrowLeft, Location } from 'iconsax-reactjs';
 import { Button } from '../ui/button';
+import Link from 'next/link';
 
 function DoctorCard({ doctor }: { doctor: Doctor | undefined | null }) {
   return (
@@ -79,7 +80,7 @@ function DoctorCard({ doctor }: { doctor: Doctor | undefined | null }) {
           <p>شاخصه ها : </p>
           {doctor?.clinicfeature.map(feature => (
             <Badge
-              className="border border-primary-500 rounded-4xl py-[5px] px-3 text-primary-500"
+              className="border border-primary-500 rounded-4xl py-[5px] px-3 bg-transparent text-primary-500"
               key={feature?.id}
             >
               {feature?.featureName}
@@ -94,11 +95,14 @@ function DoctorCard({ doctor }: { doctor: Doctor | undefined | null }) {
             <p className=" text-[#414141] text-b2 ">{`نشانی :  ${doctor?.address}`}</p>
           </div>
           <Button
+            asChild
             className="bg-primary-500 text-white
           "
           >
-            دریافت نوبت
-            <ArrowLeft size="20" color="#ffffff" />
+            <Link href={`/doctors/${doctor?.id.toString() as string}`}>
+              دریافت نوبت
+              <ArrowLeft size="20" color="#ffffff" />
+            </Link>
           </Button>
         </CardFooter>
       </CardContent>
